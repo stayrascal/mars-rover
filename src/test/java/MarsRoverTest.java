@@ -36,4 +36,15 @@ public class MarsRoverTest {
 
         assertThat(marsRover.getPositionAndOrientation(), is("0 1 N"));
     }
+
+    @Test
+    public void should_return_01w_when_received_a_move_command_given_another_initial_position_and_orientation() throws Exception {
+
+        MarsRover marsRover = new MarsRover(1, 1, "W");
+
+        marsRover.execute("M");
+
+        assertThat(marsRover.getPositionAndOrientation(), is("0 1 W"));
+
+    }
 }

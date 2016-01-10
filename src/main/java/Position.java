@@ -11,8 +11,8 @@ public class Position {
     }
 
     public void move(Vector vector) {
-        this.x = vector.getX();
-        this.y = vector.getY();
+        this.x += vector.getX();
+        this.y += vector.getY();
     }
 
     @Override

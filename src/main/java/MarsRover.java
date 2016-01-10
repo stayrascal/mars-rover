@@ -16,10 +16,6 @@ public class MarsRover {
         return orientation;
     }
 
-    public void setOrientation(Orientation orientation) {
-        this.orientation = orientation;
-    }
-
     public void execute(String commands) {
         for (char command : commands.toCharArray()) {
             execute(command);
