@@ -17,12 +17,19 @@ public class MarsRover {
     public void execute(String command) {
         if ("L".equalsIgnoreCase(command)) {
             turnLeft();
+        } else if ("R".equals(command)) {
+            turnRight();
         }
     }
 
+    private void turnRight() {
+        int preOrientationIndex = orientationList.indexOf(orientation) < 3 ? orientationList.indexOf(orientation) : 0;
+        orientation = orientationList.get(preOrientationIndex + 1);
+    }
+
     private void turnLeft() {
-        int nowOrientationIndex = orientationList.indexOf(orientation) > 0 ? orientationList.indexOf(orientation) : orientationList.size();
-        orientation = orientationList.get(nowOrientationIndex - 1);
+        int preOrientationIndex = orientationList.indexOf(orientation) > 0 ? orientationList.indexOf(orientation) : orientationList.size();
+        orientation = orientationList.get(preOrientationIndex - 1);
     }
 
     public String getPositionAndOrientation() {

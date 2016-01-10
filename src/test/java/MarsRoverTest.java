@@ -14,10 +14,19 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void should_return_00w_when_received_a_left_turn_command() throws Exception {
+    public void should_return_00W_when_received_a_left_turn_command() throws Exception {
 
         marsRover.execute("L");
 
         assertThat(marsRover.getPositionAndOrientation(), is("0 0 W"));
+    }
+
+    @Test
+    public void should_return_00R_when_received_a_right_turn_command() throws Exception {
+
+        marsRover.execute("R");
+
+        assertThat(marsRover.getPositionAndOrientation(), is("0 0 E"));
+
     }
 }
