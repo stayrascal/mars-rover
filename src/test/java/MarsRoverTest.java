@@ -22,7 +22,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void should_return_00R_when_received_a_right_turn_command() throws Exception {
+    public void should_return_00E_when_received_a_right_turn_command() throws Exception {
 
         marsRover.execute("R");
 
@@ -61,6 +61,14 @@ public class MarsRoverTest {
         marsRover.execute("RMLRR");
 
         assertThat(marsRover.getPositionAndOrientation(), is("1 0 S"));
+    }
 
+    @Test
+    public void should_return_55S_when_received_multiple_command_and_the_initial_position_and_orientation_is_55N() throws Exception {
+        MarsRover marsRover = new MarsRover(5, 5, "N");
+
+        marsRover.execute("MRMR");
+
+        assertThat(marsRover.getPositionAndOrientation(), is("5 5 S"));
     }
 }
