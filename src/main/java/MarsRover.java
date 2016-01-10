@@ -17,8 +17,22 @@ public class MarsRover {
     public void execute(String command) {
         if ("L".equalsIgnoreCase(command)) {
             turnLeft();
-        } else if ("R".equals(command)) {
+        } else if ("R".equalsIgnoreCase(command)) {
             turnRight();
+        } else if ("M".equalsIgnoreCase(command)) {
+            move();
+        }
+    }
+
+    private void move() {
+        if ("N".equalsIgnoreCase(orientation)) {
+            y++;
+        } else if ("E".equalsIgnoreCase(orientation)) {
+            x++;
+        } else if ("S".equalsIgnoreCase(orientation)) {
+            y--;
+        } else {
+            x--;
         }
     }
 
