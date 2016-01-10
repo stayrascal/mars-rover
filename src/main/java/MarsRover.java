@@ -1,43 +1,37 @@
-
-import java.util.Arrays;
-import java.util.List;
-
 public class MarsRover {
 
-    private final List<String> orientationList = Arrays.asList("N", "E", "S", "W");
-    private int x;
-    private int y;
+    private Position position;
     private Orientation orientation;
 
     public MarsRover(int initialX, int initialY, String initialOrientation) {
-        this.x = initialX;
-        this.y = initialY;
+        this.position = new Position(initialX, initialY);
         this.orientation = Orientation.valueOf(initialOrientation);
     }
 
-    public void execute(String command) {
-        if ("L".equalsIgnoreCase(command)) {
-            orientation = orientation.turnLeft();
-        } else if ("R".equalsIgnoreCase(command)) {
-            orientation = orientation.turnRight();
-        } else if ("M".equalsIgnoreCase(command)) {
-            move();
+    public Position getPosition() {
+        return position;
+    }
+
+    public Orientation getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(Orientation orientation) {
+        this.orientation = orientation;
+    }
+
+    public void execute(String commands) {
+        for (char command : commands.toCharArray()) {
+            execute(command);
         }
     }
 
-    private void move() {
-        if ("N".equalsIgnoreCase(orientation.name())) {
-            y++;
-        } else if ("E".equalsIgnoreCase(orientation.name())) {
-            x++;
-        } else if ("S".equalsIgnoreCase(orientation.name())) {
-            y--;
-        } else {
-            x--;
-        }
+    public void execute(char direction) {
+        Command command = CommandFactory.createCommand(direction);
+        command.execute(this);
     }
 
     public String getPositionAndOrientation() {
-        return x + " " + y + " " + orientation;
+        return position.toString() + " " + orientation.getOrientation();
     }
 }

@@ -14,7 +14,11 @@ public enum Orientation {
     }
 
     public Orientation turnRight() {
-        int next = index + 1 > values().length ? index + 1 - values().length : index + 1;
+        int next = index + 1 >= values().length ? index + 1 - values().length : index + 1;
         return values()[next];
+    }
+
+    public Orientation getOrientation() {
+        return values()[index];
     }
 }
