@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -6,44 +7,34 @@ public class MarsRover {
     private final List<String> orientationList = Arrays.asList("N", "E", "S", "W");
     private int x;
     private int y;
-    private String orientation;
+    private Orientation orientation;
 
     public MarsRover(int initialX, int initialY, String initialOrientation) {
         this.x = initialX;
         this.y = initialY;
-        this.orientation = initialOrientation;
+        this.orientation = Orientation.valueOf(initialOrientation);
     }
 
     public void execute(String command) {
         if ("L".equalsIgnoreCase(command)) {
-            turnLeft();
+            orientation = orientation.turnLeft();
         } else if ("R".equalsIgnoreCase(command)) {
-            turnRight();
+            orientation = orientation.turnRight();
         } else if ("M".equalsIgnoreCase(command)) {
             move();
         }
     }
 
     private void move() {
-        if ("N".equalsIgnoreCase(orientation)) {
+        if ("N".equalsIgnoreCase(orientation.name())) {
             y++;
-        } else if ("E".equalsIgnoreCase(orientation)) {
+        } else if ("E".equalsIgnoreCase(orientation.name())) {
             x++;
-        } else if ("S".equalsIgnoreCase(orientation)) {
+        } else if ("S".equalsIgnoreCase(orientation.name())) {
             y--;
         } else {
             x--;
         }
-    }
-
-    private void turnRight() {
-        int preOrientationIndex = orientationList.indexOf(orientation) < 3 ? orientationList.indexOf(orientation) : 0;
-        orientation = orientationList.get(preOrientationIndex + 1);
-    }
-
-    private void turnLeft() {
-        int preOrientationIndex = orientationList.indexOf(orientation) > 0 ? orientationList.indexOf(orientation) : orientationList.size();
-        orientation = orientationList.get(preOrientationIndex - 1);
     }
 
     public String getPositionAndOrientation() {
