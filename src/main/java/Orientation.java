@@ -1,24 +1,25 @@
+import java.util.Arrays;
+import java.util.List;
 
-public enum Orientation {
-    N(0), E(1), S(2), W(3);
+public class Orientation {
 
+    private final List<String> directions = Arrays.asList("N", "E", "S", "W");
     private int index;
 
-    Orientation(int index) {
-        this.index = index;
+    public Orientation(String direction) {
+        this.index = directions.indexOf(direction);
     }
 
-    public Orientation turnLeft() {
-        int pre = index - 1 < 0 ? index - 1 + values().length : index - 1;
-        return values()[pre];
+    public void turnLeft() {
+        index = index - 1 < 0 ? index - 1 + directions.size() : index - 1;
     }
 
-    public Orientation turnRight() {
-        int next = index + 1 >= values().length ? index + 1 - values().length : index + 1;
-        return values()[next];
+    public void turnRight() {
+        index = index + 1 >= directions.size() ? index + 1 - directions.size() : index + 1;
     }
 
-    public Orientation getOrientation() {
-        return values()[index];
+    @Override
+    public String toString() {
+        return directions.get(index);
     }
 }

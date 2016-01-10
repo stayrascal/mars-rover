@@ -5,7 +5,7 @@ public class MarsRover {
 
     public MarsRover(int initialX, int initialY, String initialOrientation) {
         this.position = new Position(initialX, initialY);
-        this.orientation = Orientation.valueOf(initialOrientation);
+        this.orientation = new Orientation(initialOrientation);
     }
 
     public Position getPosition() {
@@ -32,6 +32,6 @@ public class MarsRover {
     }
 
     public String getPositionAndOrientation() {
-        return position.toString() + " " + orientation.getOrientation();
+        return position.toString() + " " + orientation.toString();
     }
 }
