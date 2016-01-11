@@ -81,4 +81,20 @@ public class MarsRoverTest {
 
         assertThat(marsRover.getPositionAndOrientation(), is("0 0 S"));
     }
+
+    @Test
+    public void should_return_00N_when_receive_wrong_command() throws Exception {
+
+        marsRover.execute("GSDF");
+
+        assertThat(marsRover.getPositionAndOrientation(), is("0 0 N"));
+    }
+
+    @Test
+    public void should_return_10N_when_receive_another_command() throws Exception {
+
+        marsRover.execute("GDFSRMLDFS");
+
+        assertThat(marsRover.getPositionAndOrientation(), is("1 0 N"));
+    }
 }
