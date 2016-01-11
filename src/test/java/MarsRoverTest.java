@@ -36,4 +36,5 @@ public class MarsRoverTest {
 
         assertThat(marsRover.getPositionAndOrientation(), is("0 1 N"));
     }
+
 }
