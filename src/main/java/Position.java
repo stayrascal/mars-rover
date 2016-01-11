@@ -1,11 +1,6 @@
 
 public class Position {
 
-    private final int minX = 0;
-    private final int maxX = 5;
-    private final int minY = 0;
-    private final int maxY = 5;
-
     private int x;
     private int y;
 
@@ -21,10 +16,10 @@ public class Position {
     }
 
     private void validateBoundary() {
-        this.x = this.x < minX ? minX : this.x;
-        this.x = this.x > maxX ? maxX : this.x;
-        this.y = this.y < minX ? minY : this.y;
-        this.y = this.y > maxX ? maxY : this.y;
+        this.x = this.x < Constants.minX ? Constants.minX : this.x;
+        this.x = this.x > Constants.maxX ? Constants.maxX : this.x;
+        this.y = this.y < Constants.minY ? Constants.minX : this.y;
+        this.y = this.y > Constants.maxY ? Constants.maxY : this.y;
     }
 
     @Override
