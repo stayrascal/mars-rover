@@ -19,7 +19,7 @@ public class CommandFactory {
     }
 
     public static Command createCommand(char commandChar) {
-        return commands.get(commandChar);
+        return commands.get(commandChar) == null ? new NoCommand() : commands.get(commandChar);
     }
 
     public static Vector getVectorByOrientation(Orientation orientation) {
